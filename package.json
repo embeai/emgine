@@ -1,7 +1,7 @@
 {
   "name": "emgine",
   "version": "1.0.0",
-  "description": "Remotion-style static graphics renderer. JSX compositions → PNG / PDF / WebP / SVG.",
+  "description": "JSX-to-image graphics engine. Write compositions, get PNG / PDF / WebP / SVG output.",
   "type": "module",
   "bin": {
     "emgine": "./cli/index.ts"

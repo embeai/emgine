@@ -1,5 +1,5 @@
 // src/Root.tsx
-// Composition registry — mirrors Remotion's Root.tsx exactly.
+// Composition registry — register all compositions here.
 //
 // To add a new composition:
 //   1. Create src/YourComposition.tsx

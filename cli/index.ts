@@ -1,7 +1,6 @@
 #!/usr/bin/env tsx
 // cli/index.ts
 // Emgine CLI entry point.
-// Mirrors Remotion's CLI: emgine render | preview | batch | list
 
 import { commandRender }  from './commands/render.js'
 import { commandPreview } from './commands/preview.js'

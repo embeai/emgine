@@ -1,6 +1,5 @@
 // src/composition.ts
 // Composition type definitions and registerRoot.
-// Mirrors Remotion's composition API for static graphics.
 
 import type React from 'react'
 
