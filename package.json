@@ -1,0 +1,36 @@
+{
+  "name": "emgine",
+  "version": "1.0.0",
+  "description": "Remotion-style static graphics renderer. JSX compositions → PNG / PDF / WebP / SVG.",
+  "type": "module",
+  "bin": {
+    "emgine": "./cli/index.ts"
+  },
+  "scripts": {
+    "render": "tsx cli/index.ts render",
+    "preview": "tsx cli/index.ts preview",
+    "batch": "tsx cli/index.ts batch",
+    "list": "tsx cli/index.ts list"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.1",
+    "pdfkit": "^0.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "satori": "^0.10.14",
+    "sharp": "^0.33.5",
+    "svg2pdf.js": "^2.2.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/pdfkit": "^0.13.6",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
