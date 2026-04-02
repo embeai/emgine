@@ -39,6 +39,7 @@ npm run new      # Scaffold a new composition (interactive)
 This project is a creative production system. Each output type has a prompt template in `prompts/`.
 Current templates:
 - `prompts/emgine.md` — Universal project brief: visual compositions, asset compilation, and copy fields (output-type agnostic)
+- `prompts/ideation.md` — Creative ideation via parallel sub-agents. Run after brief approval, before design.md. Optional — use for client-facing or high-stakes projects only.
 
 More templates to add as the framework grows (Ad Creatives, IG Carousel, Graphic Materials, etc.).
 
@@ -64,7 +65,19 @@ Claude creates `active/<project-slug>/` first, then writes the filled brief to `
 All drafts, working assets, and in-progress files for this project stay in that folder.
 Review it. Adjust any variables. Approve.
 
-**Step 2 — Asset checklist**
+**Step 2 — Creative ideation (optional — client-facing or high-stakes projects only)**
+
+Skip this step for quick personal work. Use it when the layout direction matters — client delivery, carousel, or when you want to explore multiple directions before committing.
+
+```
+Read prompts/ideation.md and run ideation for active/<project-slug>/brief.md
+```
+
+Claude assesses complexity, recommends agent count, and waits for your approval before spawning.
+After agents finish, Claude presents all directions — you pick the winner.
+Output saved to `active/<project-slug>/ideation.md`.
+
+**Step 3 — Asset checklist**
 
 Claude reviews the brief and produces an asset checklist — different every project:
 - Lists every asset needed (backgrounds, screenshots, logos, etc.)
@@ -78,23 +91,23 @@ npm run new <ProjectName>Thumbnail 432 324
 npm run new <ProjectName>UI 1200 2950
 ```
 
-**Step 3 — Scaffold the composition**
+**Step 4 — Scaffold the composition**
 
-Run the commands Claude gave you in Step 2.
+Run the commands Claude gave you in Step 3.
 
-**Step 4 — Run the work session**
+**Step 5 — Run the work session**
 
 Paste the filled SYSTEM PROMPT block from your approved `active/<project-slug>/brief.md` as the first message.
 Claude reads `docs/RENDER.md` (Satori CSS constraints) and `active/<project-slug>/design.md` (project design spec), then writes the TSX.
 
-**Step 5 — Render and review**
+**Step 6 — Render and review**
 
 ```bash
 npm run preview <ProjectName>    # DRAFT watermark — quick visual check
 npm run render <ProjectName>     # Final PNG to out/
 ```
 
-**Step 6 — Ship the output**
+**Step 7 — Ship the output**
 
 PNGs live in `out/`. Upload to your portfolio, client delivery, or any platform.
 
