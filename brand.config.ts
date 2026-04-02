@@ -5,13 +5,13 @@
 
 export const brand = {
   colors: {
-    primary:   '#7C3AED',   // main accent — CTAs, highlights
-    secondary: '#A78BFA',   // supporting accent
-    bg:        '#0F0F1A',   // default background
-    surface:   '#1A1A2E',   // card / panel background
-    text:      '#FFFFFF',   // primary text
-    textMuted: '#94A3B8',   // secondary / caption text
-    border:    '#2D2D44',   // dividers, outlines
+    primary:   '#00D4FF',   // electric cyan — Ad Creatives accent
+    secondary: '#00A3C4',   // deeper cyan — supporting accent
+    bg:        '#0D0D0D',   // near-black — base background
+    surface:   '#161616',   // lifted surface — cards, panels
+    text:      '#F5F5F5',   // crisp white — primary text
+    textMuted: '#6B7280',   // neutral grey — captions, labels
+    border:    '#2A2A2A',   // dark border — dividers, outlines
     danger:    '#EF4444',   // error states
     success:   '#22C55E',   // confirmation states
   },
@@ -20,8 +20,8 @@ export const brand = {
     heading:     'Inter',                      // must match loaded font name exactly
     body:        'Inter',
     mono:        'JetBrains Mono',
-    headingFile: 'Inter-Bold.ttf',             // file must exist in public/fonts/
-    bodyFile:    'Inter-Regular.ttf',
+    headingFile: 'Inter-Bold.woff',             // file must exist in public/fonts/
+    bodyFile:    'Inter-Regular.woff',
     monoFile:    'JetBrainsMono-Regular.ttf',
   },
 

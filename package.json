@@ -10,7 +10,8 @@
     "render": "tsx cli/index.ts render",
     "preview": "tsx cli/index.ts preview",
     "batch": "tsx cli/index.ts batch",
-    "list": "tsx cli/index.ts list"
+    "list": "tsx cli/index.ts list",
+    "new": "tsx cli/index.ts new"
   },
   "dependencies": {
     "jspdf": "^4.2.1",

@@ -8,24 +8,6 @@
 //
 // The id must be PascalCase, unique, and match the filename.
 
-import { Composition } from './composition.js'
-
-// --- Import compositions below this line ---
-// import { Hero } from './Hero.js'
-// import { Banner } from './Banner.js'
-
 export function Root() {
-  return [
-    // --- Register compositions below this line ---
-    // Composition({
-    //   id: 'Hero',
-    //   component: Hero,
-    //   width: 1200,
-    //   height: 630,
-    //   defaultProps: {
-    //     headline: 'Your Headline Here',
-    //     subline: 'Supporting text goes here',
-    //   },
-    // }),
-  ]
+  return []
 }

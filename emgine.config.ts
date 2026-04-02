@@ -28,8 +28,8 @@ export const config = {
   // Sharp rasterization settings
   sharp: {
     // DPI for SVG → raster conversion
-    // 144 = web quality, 300 = print quality
-    density: 144,
+    // 96 = 1:1 pixel output, 144 = web quality, 300 = print quality
+    density: 96,
   },
 
   // PDF settings (used for both raster and vector PDF)

@@ -6,6 +6,7 @@ import { commandRender }  from './commands/render.js'
 import { commandPreview } from './commands/preview.js'
 import { commandBatch }   from './commands/batch.js'
 import { commandList }    from './commands/list.js'
+import { commandNew }     from './commands/new.js'
 
 const [,, command, ...args] = process.argv
 
@@ -17,12 +18,14 @@ Usage:
   emgine preview <id> [--format png] [--props '{"k":"v"}']
   emgine batch   [dir] [--format png] [--out path]
   emgine list
+  emgine new     <CompositionId> [width] [height]
 
 Commands:
   render   Render a composition to out/
   preview  Render a draft to out/preview/ with DRAFT watermark
   batch    Render all jobs from graphics/*.json sequentially
   list     List all registered compositions
+  new      Scaffold a new composition (TSX stub + Root.tsx registration + batch job)
 
 Examples:
   emgine render Hero
@@ -33,6 +36,8 @@ Examples:
   emgine batch
   emgine batch ./graphics --format jpg
   emgine list
+  emgine new HeroCard
+  emgine new HeroCard 1200 630
 `
 
 switch (command) {
@@ -47,6 +52,9 @@ switch (command) {
     break
   case 'list':
     commandList()
+    break
+  case 'new':
+    await commandNew(args)
     break
   case undefined:
   case '--help':
