@@ -51,12 +51,12 @@ More templates to add as the framework grows (Ad Creatives, IG Carousel, Graphic
 Give Claude a brief and ask it to fill the brief:
 ```
 Read prompts/emgine.md and fill it for:
-  Project: GoHighLevel Funnel Duplication
-  Output type: Thumbnail + UI Mockup
-  Platform: GoHighLevel
-  Work: Rebuilt 6-stage pipeline, reconfigured automation triggers, set up contact tagging
-  Result: Reduced manual follow-up time by ~60%
-  Assets: public/images/ghl-funnel/pipeline-overview.png (shows the rebuilt pipeline stages)
+  Project: <project name>
+  Output type: <e.g. Thumbnail + UI Mockup>
+  Platform: <e.g. n8n, Airtable, GHL>
+  Work: <what you built or delivered>
+  Result: <measurable outcome>
+  Assets: public/images/<project-slug>/<filename.png> (<description>)
   Phases: visual composition, asset compilation
 ```
 
@@ -74,8 +74,8 @@ Claude reviews the brief and produces an asset checklist — different every pro
 
 Claude also outputs the ready-to-run scaffold commands based on the output types in the brief — no memorizing sizes needed:
 ```bash
-npm run new GHLFunnelThumbnail 432 324
-npm run new GHLFunnelUI 1200 2950
+npm run new <ProjectName>Thumbnail 432 324
+npm run new <ProjectName>UI 1200 2950
 ```
 
 **Step 3 — Scaffold the composition**
@@ -90,13 +90,13 @@ Claude reads `docs/RENDER.md` (Satori CSS constraints) and `active/<project-slug
 **Step 5 — Render and review**
 
 ```bash
-npm run preview GHLFunnel    # DRAFT watermark — quick visual check
-npm run render GHLFunnel     # Final PNG to out/
+npm run preview <ProjectName>    # DRAFT watermark — quick visual check
+npm run render <ProjectName>     # Final PNG to out/
 ```
 
-**Step 6 — Drop into Upwork**
+**Step 6 — Ship the output**
 
-PNGs live in `out/`. Upload directly to the Upwork portfolio entry.
+PNGs live in `out/`. Upload to your portfolio, client delivery, or any platform.
 
 ---
 
