@@ -72,23 +72,28 @@ npm run list
 
 ```
 emgine/
-├── emgine.config.ts     ← render config (output dir, format, DPI)
-├── brand.config.ts      ← client brand tokens (colors, fonts, logo)
+├── emgine.config.ts         ← render config (output dir, format, DPI)
+├── brand.config.ts          ← brand tokens (colors, fonts, spacing)
 ├── src/
-│   ├── index.ts         ← entry point
-│   ├── Root.tsx         ← composition registry
-│   └── *.tsx            ← your compositions (one file per graphic)
+│   ├── index.ts             ← entry point
+│   ├── Root.tsx             ← composition registry
+│   └── *.tsx                ← approved compositions (one file per graphic)
 ├── public/
-│   ├── fonts/           ← TTF / OTF / WOFF font files
-│   └── images/          ← logos, photos, static assets
-├── graphics/            ← batch props files (*.json)
-├── out/                 ← final renders
-│   └── preview/         ← draft renders
+│   ├── fonts/               ← TTF / OTF / WOFF font files (shared)
+│   └── images/
+│       └── <project-slug>/  ← assets organized by project
+├── active/
+│   └── <project-slug>/      ← per-project workbench (brief, design, assets)
+├── prompts/                 ← blank brief templates
+├── graphics/                ← batch props files (*.json)
+├── out/                     ← final renders
+│   └── preview/             ← draft renders
 ├── docs/
-│   ├── RENDER.md        ← Satori CSS allowlist + pipeline rules
-│   ├── SIZES.md         ← preset size map (OG, Story, A4, etc.)
-│   └── BRAND.md         ← how to use brand.config.ts
-└── cli/                 ← CLI commands
+│   ├── RENDER.md            ← Satori CSS allowlist + pipeline rules
+│   ├── SIZES.md             ← preset size map (OG, Story, A4, etc.)
+│   ├── DESIGN.md            ← design spec reference template
+│   └── BRAND.md             ← how to use brand.config.ts
+└── cli/                     ← CLI commands
 ```
 
 ---
@@ -203,6 +208,59 @@ npm run batch
 6. Register them in src/Root.tsx
 7. Run emgine render → assets land in out/
 ```
+
+---
+
+## With Claude (AI-Assisted Workflow)
+
+Emgine is designed to work with Claude as a composition author. Instead of writing TSX manually, you brief Claude and it handles the design work.
+
+### Folder roles
+
+| Folder | Role |
+|---|---|
+| `prompts/` | Blank brief templates — never filled directly |
+| `active/<project-slug>/` | Per-project workbench — brief, design spec, asset prompts |
+| `public/images/<project-slug>/` | Project image assets |
+| `public/fonts/` | Shared fonts (all compositions) |
+| `src/` | Approved, render-ready compositions only |
+| `out/` | Final renders |
+
+### 6-step workflow
+
+**Step 1 — Fill the brief**
+Give Claude your project details and ask it to fill `prompts/emgine.md`. Claude creates `active/<project-slug>/` and writes:
+- `brief.md` — filled project brief
+- `design.md` — visual design spec for this project
+
+Review both and approve before moving on.
+
+**Step 2 — Asset checklist**
+Claude reviews the brief and produces a checklist:
+- Lists every asset needed (backgrounds, screenshots, logos)
+- Flags what you provide vs. what Claude can generate or substitute
+- Writes any AI image prompts to `active/<project-slug>/assets.md`
+- Outputs ready-to-run scaffold commands — no memorizing sizes needed
+
+**Step 3 — Scaffold**
+Run the commands Claude gave you:
+```bash
+npm run new ProjectThumbnail 432 324
+npm run new ProjectUI 1200 2950
+```
+
+**Step 4 — Work session**
+Paste the SYSTEM PROMPT block from `active/<project-slug>/brief.md` as your first message.
+Claude reads `docs/RENDER.md` and `active/<project-slug>/design.md` before writing any TSX.
+
+**Step 5 — Render & review**
+```bash
+npm run preview ProjectName    # DRAFT watermark — quick check
+npm run render ProjectName     # Final PNG to out/
+```
+
+**Step 6 — Ship**
+PNGs in `out/` are ready to upload.
 
 ---
 
